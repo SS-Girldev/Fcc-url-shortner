@@ -60,8 +60,8 @@ app.post('/api/shorturl', function(req,res) {
 });
 //When you visit /api/shorturl/<short_url>, you will be redirected to the original URL
 app.get ("/api/shorturl/:short_url",async (req, res) => {
-  const short_url = req.params.short_url; // grabbing short_url out of params
-  const result = await urls.findOne({short_url: +shorturl});//getting original url based on short_url from our database
+  const shorturl = req.params.short_url; // grabbing short_url out of params
+  const urlDoc = await urls.findOne({short_url: +shorturl});//getting original url based on short_url from our database
   res.redirect(urlDoc.url);
 
 
